@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cengistan - Teknoloji Haberleri</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        
+        body {
+             font-family: 'Comfortaa', cursive;
+            line-height: 1.6;
+            color: #00ffff;
+            background: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 255, 0, 0.1) 0%, transparent 50%);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            border-bottom: 2px solid #00ffff;
+            backdrop-filter: blur(10px);
+            color: #00ffff;
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            animation: scan 3s infinite;
+        }
+        
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ffff; }
+            to { text-shadow: 0 0 30px #00ffff, 0 0 40px #00ffff; }
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #00ffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+         nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+        
+        nav a:hover::before {
+            transform: translateX(0);
+        }
+        nav a:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .news-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 255, 0.4),
+                0 0 30px rgba(255, 0, 255, 0.3);
+            border-color: #ff00ff;
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ff00, #00ffff);
+            background-size: 200% 100%;
+            animation: borderMove 3s linear infinite;
+        }
+        
+        @keyframes borderMove {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: imageShine 4s infinite;
+        }
+        
+        @keyframes imageShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .news-content {
+            padding: 2rem;
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .news-summary {
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .read-more {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .read-more::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff00ff, #00ff00);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        
+        .read-more:hover::before {
+            left: 0;
+        }
+        
+        .read-more:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 2px solid #00ffff;
+            color: #00ffff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: footerGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes footerGlow {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Cengistan</div>
+                <nav>
+                    <ul>
+                        <li><a href="#anasayfa">Ana Sayfa</a></li>
+                        <li><a href="#teknoloji">Teknoloji</a></li>
+                        <li><a href="#iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Gelecek Teknolojileri</h1>
+            
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image">AI Evolution</div>
+                    <div class="news-content">
+                        <h2 class="news-title">Yapay Zeka Devrimi 2025</h2>
+                        <p class="news-summary">Quantum bilgisayarlar ve nöral ağların birleşmesiyle yapay zeka, insan zekasını aşan performans göstermeye başladı. Gelecek teknolojilerinin önünü açan bu gelişmeler...</p>
+                        <div class="news-meta">
+                            <span>29.06.2025</span>
+                            <a href="#" class="read-more">Matrix'e Gir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-image">Cyber Mobile</div>
+                    <div class="news-content">
+                        <h2 class="news-title">Holografik Telefonlar</h2>
+                        <p class="news-summary">2025'in devrim niteliğindeki holografik akıllı telefonları, 3D projeksiyon teknolojisi ile gerçek dünyayı sanal dünyayla birleştiriyor. Cyber geleceğin kapıları açılıyor...</p>
+                        <div class="news-meta">
+                            <span>28.06.2025</span>
+                            <a href="#" class="read-more">Cyber Dive</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-image">Quantum Gaming</div>
+                    <div class="news-content">
+                        <h2 class="news-title">Metaverse Gaming 3.0</h2>
+                        <p class="news-summary">Quantum işlemciler ve beyin-bilgisayar arayüzleriyle gaming dünyası tamamen değişiyor. Artık oyunlar sadece oynamıyorsunuz, yaşıyorsunuz. Neural link teknolojisi ile...</p>
+                        <div class="news-meta">
+                            <span>27.06.2025</span>
+                            <a href="#" class="read-more">Neural Link</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CENGISTAN - FUTURE TECH NETWORK</p>
+        </div>
+    </footer>
+</body>
+</html>
